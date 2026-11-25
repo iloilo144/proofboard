@@ -4,7 +4,7 @@
 clients track project progress, review deliverables, exchange feedback and approve finished
 work.
 
-> Live demo: _add your Vercel URL here_ · Part of [my portfolio](https://your-portfolio-url.vercel.app)
+> Live demo: [proofboard-seven.vercel.app](https://proofboard-seven.vercel.app) · Part of [my portfolio](https://portfolio-beta-gilt-2tyi5pjln6.vercel.app)
 
 ![Proofboard overview](docs/screenshot.jpg)
 
