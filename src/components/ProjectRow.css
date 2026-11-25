@@ -1,0 +1,226 @@
+.prows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.6rem minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.4fr) 6.5rem 8.5rem 1rem;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s;
+}
+
+.prow:last-child {
+  border-bottom: 0;
+}
+
+.prow:hover {
+  background: #fafafb;
+}
+
+.prow__swatch {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 3px;
+}
+
+.prow__name {
+  display: grid;
+  min-width: 0;
+}
+
+.prow__name a {
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* whole row clickable */
+.prow__name a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.prow__name a:focus-visible {
+  outline: none;
+}
+
+.prow__name a:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 6px;
+}
+
+.prow__name span,
+.prow__client span {
+  color: var(--ink-3);
+  font-size: 0.8125rem;
+}
+
+.prow__client {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.prow__client span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prow__due {
+  display: grid;
+}
+
+.prow__due small {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.prow__due.is-urgent small {
+  color: var(--amber);
+  font-weight: 550;
+}
+
+.prow .badge {
+  justify-self: start;
+}
+
+.prow__chev {
+  color: var(--ink-3);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.15s, transform 0.25s var(--ease);
+}
+
+.prow:hover .prow__chev {
+  opacity: 1;
+  transform: none;
+  color: var(--accent);
+}
+
+/* Milestone bar ------------------------------------------------------- */
+.mbar {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.mbar__track {
+  display: flex;
+  gap: 3px;
+}
+
+.mbar__seg {
+  position: relative;
+  flex: 1;
+  height: 0.38rem;
+  border-radius: 2px;
+  background: #ececf0;
+  overflow: hidden;
+}
+
+.mbar__fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--ink);
+}
+
+.mbar__fill.is-done {
+  transform: scaleX(1);
+  animation: fill 0.5s var(--ease) both;
+  animation-delay: calc(0.15s + var(--i) * 90ms);
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* the next milestone shimmers gently: work in progress */
+.mbar__seg.is-next {
+  background: linear-gradient(90deg, var(--accent-soft) 0%, #d6daff 50%, var(--accent-soft) 100%);
+  background-size: 200% 100%;
+  animation: progress-shimmer 2s linear infinite;
+}
+
+@keyframes progress-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.mbar__label {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mbar__label .mono {
+  color: var(--ink-3);
+}
+
+@media (max-width: 1480px) {
+  .prow {
+    grid-template-columns: 0.6rem minmax(0, 1.3fr) minmax(0, 1.5fr) 6.5rem 8.5rem 1rem;
+  }
+
+  .prow__client {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .prow {
+    grid-template-columns: 0.6rem 1fr auto;
+    grid-template-areas:
+      'sw name badge'
+      'sw bar bar'
+      'sw due due';
+    gap: 0.5rem 0.9rem;
+  }
+
+  .prow__swatch {
+    grid-area: sw;
+    align-self: start;
+    margin-top: 0.45rem;
+  }
+
+  .prow__name {
+    grid-area: name;
+  }
+
+  .prow .badge {
+    grid-area: badge;
+  }
+
+  .prow .mbar {
+    grid-area: bar;
+  }
+
+  .prow__due {
+    grid-area: due;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .prow__chev {
+    display: none;
+  }
+}

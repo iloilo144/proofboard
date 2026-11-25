@@ -1,0 +1,35 @@
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.app__main {
+  min-width: 0;
+}
+
+.app__scrim {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .app__scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    display: block;
+    background: rgba(21, 23, 28, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .nav-open .app__scrim {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

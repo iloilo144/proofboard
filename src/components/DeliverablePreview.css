@@ -1,0 +1,442 @@
+.dp {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ecece6;
+  container-type: inline-size;
+}
+
+/* sized from the preview's own width, so thumbnails and the large stage scale identically */
+.dp > * {
+  font-size: 2.2cqi;
+}
+
+.dp--small {
+  border-radius: 4px;
+}
+
+.dp em {
+  display: block;
+  height: 0.55em;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.18;
+  margin-top: 0.6em;
+}
+
+.dp em.short {
+  width: 60%;
+}
+
+.dp button {
+  font-size: inherit;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Browser frame */
+.dp__browser {
+  position: absolute;
+  inset: 6% 6% 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.6em 0.6em 0 0;
+  overflow: hidden;
+  background: var(--l);
+  box-shadow: 0 1.2em 3em -1.5em rgba(0, 0, 0, 0.35);
+}
+
+.dp__chrome {
+  display: flex;
+  gap: 0.35em;
+  padding: 0.6em 0.8em;
+  background: #e2e2dc;
+}
+
+.dp__chrome i {
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: #c6c6bf;
+}
+
+.dp__page {
+  flex: 1;
+  padding: 0 1.6em;
+  color: var(--d);
+}
+
+.dp__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  padding: 1em 0;
+}
+
+.dp__nav b {
+  margin-right: auto;
+  font-size: 1.1em;
+  letter-spacing: -0.02em;
+}
+
+.dp__nav span {
+  width: 3em;
+  height: 0.45em;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.25;
+}
+
+.dp__hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  align-items: center;
+  padding: 1em 0 1.5em;
+}
+
+.dp__hero strong,
+.dp__landing strong {
+  display: block;
+  font-size: 2em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.dp__hero button,
+.dp__waitlist button {
+  margin-top: 1.2em;
+  padding: 0.6em 1em;
+  border-radius: 0.3em;
+  background: var(--a);
+  color: #fff;
+  font-weight: 600;
+}
+
+.dp__photo {
+  aspect-ratio: 4 / 3.4;
+  border-radius: 0.4em;
+  background: linear-gradient(160deg, var(--a), var(--d));
+  filter: brightness(0.75);
+  transition: filter 0.6s;
+}
+
+.dp__hero.is-bright .dp__photo {
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.dp__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.dp__row span {
+  height: 5em;
+  border-radius: 0.3em;
+  background: currentColor;
+  opacity: 0.08;
+}
+
+/* Shop */
+.dp__shop {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  gap: 1.5em;
+  padding-top: 0.5em;
+}
+
+.dp__products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+
+.dp__thumb {
+  aspect-ratio: 1;
+  border-radius: 0.3em;
+  background: var(--a);
+  opacity: 0.55;
+}
+
+.dp__product:nth-child(2n) .dp__thumb {
+  opacity: 0.35;
+}
+
+.dp__product:nth-child(3n) .dp__thumb {
+  background: var(--d);
+  opacity: 0.25;
+}
+
+/* Landing */
+.dp__landing {
+  padding: 1.5em 0;
+  text-align: center;
+}
+
+.dp__landing em {
+  width: 50%;
+  margin-inline: auto;
+}
+
+.dp__waitlist {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-bottom: 1.5em;
+}
+
+.dp__waitlist span {
+  width: 14em;
+  margin-top: 1.2em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.3em;
+  background: #fff;
+}
+
+.dp__waitlist button {
+  background: var(--d);
+}
+
+.dp--landing .dp__browser {
+  background: var(--l);
+}
+
+/* Wireframes */
+.dp__wire {
+  position: absolute;
+  inset: 8%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4%;
+  color: var(--d);
+}
+
+.dp__screen {
+  padding: 1em;
+  border: 1.5px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 0.6em;
+  background: #fff;
+}
+
+.dp__screen small {
+  font-family: var(--mono);
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.dp__box {
+  height: 30%;
+  margin-top: 1em;
+  border-radius: 0.3em;
+  background: repeating-linear-gradient(45deg, #f0f0ea 0 6px, #e6e6df 6px 12px);
+}
+
+.dp__wbtn {
+  display: block;
+  height: 1.6em;
+  margin-top: 1em;
+  border-radius: 0.3em;
+  background: var(--a);
+}
+
+/* Sitemap */
+.dp__sitemap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2em;
+  background: #fff;
+  color: var(--d);
+}
+
+.dp__level {
+  display: flex;
+  gap: 1.5em;
+}
+
+.dp__branch {
+  display: grid;
+  gap: 0.6em;
+  justify-items: center;
+}
+
+.node {
+  min-width: 7em;
+  padding: 0.6em 0.9em;
+  border: 1.5px solid var(--d);
+  border-radius: 0.3em;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.node.root {
+  background: var(--d);
+  color: var(--l);
+}
+
+.node.sub {
+  min-width: 5.5em;
+  height: 1.7em;
+  padding: 0;
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Brand */
+.dp__brand {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 2em;
+  padding: 2.5em;
+  background: var(--l);
+  color: var(--d);
+}
+
+.dp__mark {
+  display: grid;
+  place-items: center;
+  width: 9em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--d);
+  color: var(--l);
+  font-family: Georgia, serif;
+  font-size: 1.3em;
+}
+
+.dp__mark span {
+  font-size: 4em;
+  font-weight: 400;
+  transition: font-weight 0.4s;
+}
+
+.dp__mark span.heavy,
+.dp__wordmark strong.heavy {
+  font-weight: 700;
+}
+
+.dp__wordmark {
+  align-self: center;
+}
+
+.dp__wordmark strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 4.2em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.dp__wordmark small {
+  display: block;
+  margin-top: 0.6em;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--a);
+}
+
+.dp__swatches {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.6em;
+}
+
+.dp__swatches span {
+  flex: 1;
+  height: 3em;
+  border-radius: 0.3em;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Moodboard */
+.dp__mood {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6em;
+  padding: 0.6em;
+  background: var(--l);
+}
+
+.dp__mood span {
+  border-radius: 0.3em;
+}
+
+.dp__mood .t1 {
+  grid-row: span 2;
+  background: linear-gradient(170deg, var(--a), var(--d));
+}
+
+.dp__mood .t2 {
+  background: var(--d);
+}
+
+.dp__mood .t3 {
+  background: repeating-linear-gradient(90deg, #c49a6c 0 4px, #b5875a 4px 9px);
+}
+
+.dp__mood .t4 {
+  background: var(--a);
+  opacity: 0.7;
+}
+
+.dp__mood .t5 {
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: var(--d);
+  font-family: Georgia, serif;
+  font-size: 3em;
+}
+
+/* Guidelines doc */
+.dp__doc {
+  position: absolute;
+  inset: 8%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4%;
+  color: var(--d);
+}
+
+.dp__sheet {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border-radius: 0.3em;
+  background: #fff;
+  box-shadow: 0 0.5em 1.5em -0.8em rgba(0, 0, 0, 0.3);
+}
+
+.dp__sheet small {
+  font-family: var(--mono);
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+
+.dp__sheet b {
+  margin: auto 0;
+  font-family: Georgia, serif;
+  font-size: 4em;
+  font-weight: 400;
+}
+
+.dp__sheet .dp__swatches {
+  margin: auto 0;
+}
+
+.dp__sheet .dp__swatches span {
+  height: 4em;
+}

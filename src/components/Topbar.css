@@ -1,0 +1,262 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 3.4rem;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(247, 247, 248, 0.94);
+  view-transition-name: topbar;
+}
+
+::view-transition-old(topbar),
+::view-transition-new(topbar) {
+  animation: none;
+}
+
+.topbar__menu {
+  display: none;
+  width: 2.1rem;
+  padding: 0;
+}
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.crumbs__item svg {
+  color: var(--line-2);
+  flex: none;
+}
+
+.crumbs a {
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+.crumbs a:hover {
+  color: var(--ink);
+}
+
+.crumbs [aria-current='page'] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink);
+  font-weight: 550;
+}
+
+.topbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.topbar__search {
+  width: 2.1rem;
+  padding: 0;
+}
+
+.topbar__role {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.75rem;
+  padding: 0 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-size: 0.75rem;
+  font-weight: 550;
+  color: var(--ink-2);
+}
+
+.topbar__role span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.topbar__role--client span {
+  background: var(--accent);
+}
+
+.notif {
+  position: relative;
+}
+
+.notif__btn {
+  position: relative;
+  width: 2.1rem;
+  padding: 0;
+}
+
+.notif__btn.has-unread svg {
+  animation: ring 2.4s ease-in-out 1s 2;
+  transform-origin: 50% 2px;
+}
+
+@keyframes ring {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+  20%,
+  40% {
+    transform: rotate(-14deg);
+  }
+}
+
+.notif__dot {
+  position: absolute;
+  top: 0.15rem;
+  right: 0.1rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.22rem;
+  border-radius: 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.62rem;
+  line-height: 1rem;
+  text-align: center;
+  box-shadow: 0 0 0 2px var(--bg);
+  animation: pop 0.4s var(--ease);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.3);
+  }
+}
+
+.notif__panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  width: min(23rem, calc(100vw - 2rem));
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow-lg);
+  transform-origin: top right;
+  animation: panel-in 0.22s var(--ease);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+.notif__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.notif__list {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.notif__list li {
+  animation: rise 0.35s var(--ease) both;
+  animation-delay: calc(var(--i) * 30ms);
+}
+
+.notif__list a {
+  position: relative;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.6rem 0.7rem 0.6rem 1.4rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.notif__list a:hover {
+  background: var(--hover);
+}
+
+.notif__list .is-unread a::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 1.05rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.notif__list strong {
+  font-weight: 600;
+}
+
+.notif__list small {
+  color: var(--ink-3);
+  font-size: 0.75rem;
+}
+
+.notif__all {
+  display: block;
+  padding: 0.7rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink-2);
+}
+
+.notif__all:hover {
+  color: var(--accent-ink);
+}
+
+@media (max-width: 960px) {
+  .topbar__menu {
+    display: inline-flex;
+  }
+
+  .crumbs__root {
+    display: none;
+  }
+
+  .crumbs__item:first-of-type svg {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar__role {
+    display: none;
+  }
+}

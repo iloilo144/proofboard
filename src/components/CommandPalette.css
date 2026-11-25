@@ -1,0 +1,139 @@
+.palette {
+  width: min(36rem, calc(100vw - 2rem));
+  max-height: none;
+  margin: 12vh auto auto;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  overflow: visible;
+}
+
+.palette::backdrop {
+  background: rgba(15, 16, 18, 0.28);
+  animation: fade 0.2s ease;
+}
+
+.palette[open] .palette__box {
+  animation: palette-in 0.28s var(--ease);
+}
+
+@keyframes palette-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.palette__box {
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow-lg);
+}
+
+.palette__search {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.palette__search input {
+  flex: 1;
+  height: 3.25rem;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.palette__list {
+  max-height: min(24rem, 55vh);
+  margin: 0;
+  padding: 0.4rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.palette__group {
+  padding: 0.6rem 0.6rem 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 550;
+  color: var(--ink-3);
+}
+
+.palette__item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  height: 2.5rem;
+  padding: 0 0.7rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--ink-2);
+}
+
+.palette__item[aria-selected='true'] {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.palette__item[aria-selected='true'] svg:first-child {
+  color: var(--accent-ink);
+}
+
+.palette__swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-inline: 0.15rem;
+  border-radius: 3px;
+}
+
+.palette__label {
+  font-weight: 500;
+}
+
+.palette__hint {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.palette__go {
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s, transform 0.2s var(--ease);
+}
+
+.palette__item[aria-selected='true'] .palette__go {
+  opacity: 1;
+  transform: none;
+}
+
+.palette__empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+.palette__foot {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--line);
+  background: #fafafb;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.palette__foot kbd {
+  margin-right: 0.2rem;
+}

@@ -1,0 +1,417 @@
+:root {
+  --bg: #f7f7f8;
+  --panel: #ffffff;
+  --hover: #f2f2f4;
+  --ink: #0f1012;
+  --ink-2: #3f4148;
+  --ink-3: #6b6e77;
+  --line: #e7e7ea;
+  --line-2: #d9d9de;
+  --accent: #4353ff;
+  --accent-ink: #2f3de0;
+  --accent-soft: #eef0ff;
+  --green: #047857;
+  --green-soft: #dcf5ea;
+  --amber: #a14b05;
+  --amber-soft: #fff1dc;
+  --red: #c2341d;
+
+  --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(15, 16, 18, 0.05);
+  --shadow: 0 1px 2px rgba(15, 16, 18, 0.04), 0 4px 16px -6px rgba(15, 16, 18, 0.1);
+  --shadow-lg: 0 0 0 1px rgba(15, 16, 18, 0.06), 0 24px 64px -16px rgba(15, 16, 18, 0.28);
+  --ease: cubic-bezier(0.2, 0.9, 0.1, 1);
+  --sidebar: 252px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  letter-spacing: -0.01em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: #fff;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  border: 1px solid var(--line-2);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--ink-3);
+}
+
+/* Buttons: small, precise, with a 1px press */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 2.1rem;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-2);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--hover);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), var(--shadow-sm);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #24262b;
+}
+
+.btn--approve {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 8px -2px rgba(67, 83, 255, 0.5);
+}
+
+.btn--approve:hover:not(:disabled) {
+  background: var(--accent-ink);
+}
+
+.btn--quiet {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink-2);
+}
+
+.btn--quiet:hover:not(:disabled) {
+  background: var(--hover);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.input {
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+textarea.input {
+  height: auto;
+  padding: 0.6rem 0.75rem;
+  resize: vertical;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px #fde8e4;
+}
+
+.error {
+  color: var(--red);
+  font-size: 0.8125rem;
+}
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 1.45rem;
+  padding: 0 0.5rem;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge--neutral {
+  background: #f0f0f2;
+  color: var(--ink-2);
+}
+
+.badge--blue {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.badge--blue::before {
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.badge--amber {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.badge--green {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: #ececf0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 0 2px var(--panel);
+}
+
+.avatar--you {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Page scaffolding */
+.page {
+  padding: 1.75rem clamp(1rem, 3vw, 2.5rem) 4rem;
+  max-width: 1320px;
+}
+
+.page__eyebrow {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.page__title {
+  margin-top: 0.35rem;
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.section-title a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+.section-title a:hover {
+  color: var(--accent-ink);
+}
+
+.empty-state {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+.empty-state strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* fade-up used for page sections; children can stagger with --i */
+.rise {
+  animation: rise 0.5s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* View Transitions: a quick cross-fade with a small lift for page changes */
+::view-transition-old(root) {
+  animation: vt-out 0.16s ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 0.28s var(--ease) both;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.35s;
+  animation-timing-function: var(--ease);
+}
+
+/* the sidebar never moves during page transitions */
+.sidebar {
+  view-transition-name: sidebar;
+}
+
+::view-transition-old(sidebar),
+::view-transition-new(sidebar) {
+  animation: none;
+}
+
+/* Calm mode (data-motion="calm") keeps hovers, fades and colour changes. */
